@@ -11,8 +11,13 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 
-Install Visual Studio Code (RHEL / CentOS / Fedora — dnf)
+## Install Visual Studio Code
 
+Below are official install instructions for Visual Studio Code on common Linux distributions. Follow the section for your distribution.
+
+### RHEL / CentOS / Fedora (dnf)
+
+```bash
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'cat > /etc/yum.repos.d/vscode.repo <<EOF
 [code]
@@ -24,6 +29,35 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF'
 sudo dnf check-update
 sudo dnf install -y code
+```
+
+### Debian / Ubuntu (apt)
+
+```bash
+# Import the Microsoft GPG key and add the repository
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/ubuntu/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/vscode.list'
+
+# Update and install
+sudo apt update
+sudo apt install -y code
+
+# Cleanup
+rm packages.microsoft.gpg
+```
+
+Notes: if gpg is not available on the machine, install gnupg (sudo apt install -y gnupg) first.
+
+### openSUSE (zypper)
+
+```bash
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo zypper addrepo --check --name 'vscode' https://packages.microsoft.com/yumrepos/vscode vscode
+sudo zypper refresh
+sudo zypper install -y code
+```
 
 Notes:
-- The above instructions target RHEL/CentOS/Fedora systems using dnf. If you use openSUSE (zypper) or Debian/Ubuntu (apt) let me know and I will update the instructions accordingly.
+- The RHEL/CentOS/Fedora instructions use dnf. The Debian/Ubuntu instructions use apt. The openSUSE instructions use zypper.
+- If you want additions (Flatpak/Snap, or instructions for older distro releases), tell me which target and I will update the README.
