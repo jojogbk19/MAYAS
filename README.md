@@ -1,8 +1,4 @@
-
-@jojogbk19\mojamoral
-
-<!--
-**jojogbk19/jojogbk19** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+jogbk19/jojogbk19** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
@@ -21,4 +17,5 @@ Here are some ideas to get you started:
   "[javascript][typescript]": {
   "editor.maxTokenizationLineLength": 2500
 }
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc 
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.
